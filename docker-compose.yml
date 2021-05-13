@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+      - ./pg_hba.conf:/etc/postgresql/pg_hba.conf
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 15s
+  web:
+    build: .
+    image: web_django_image
+    command: python manage.py runserver 0.0.0.0:7000
+    volumes:
+      - .:/code
+    ports:
+      - "7000:7000"
+    depends_on:
+      db:
+        condition: service_healthy
+  migration:
+    image: web_django_image
+    command: python manage.py migrate --noinput
+    volumes:
+      - .:/code
+    depends_on:
+      db:
+        condition: service_healthy
