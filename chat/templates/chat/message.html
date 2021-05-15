@@ -1,0 +1,8 @@
+{% extends "chat/index.html" %}
+
+{% block content %}
+    {% for message in object_list %}
+        <h3>{{message.content}}</h3>
+        <h5>{{message.send_time}}</h5>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "chat/index.html" %}
+
+{% block content %}
+    <h3>Your dialogs:</h3>
+    {% for dialog in object_list %}
+        <h4>{{dialog.start_time}}:
+        {% for companion in dialog.users.all %}
+            {% if companion.id != user.id %}
+               {{companion}} &ensp;
+            {% endif %}
+        {% endfor %}
+        </h4>
+    {% endfor %}
+{% endblock %}
