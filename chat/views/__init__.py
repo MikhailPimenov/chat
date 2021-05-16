@@ -1,11 +1,11 @@
 from .indexview import index
 from .registerview import register
-from .messageview import MessageListAPIView
-from .dialogview import DialogListAPIView
+from .messageview import MessageListView
+from .dialogview import DialogListView
 
 __all__ = [
     'index',
     'register',
-    'MessageListAPIView',
-    'DialogListAPIView',
+    'MessageListView',
+    'DialogListView',
 ]
