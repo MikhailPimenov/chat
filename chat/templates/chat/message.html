@@ -1,8 +1,15 @@
 {% extends "chat/index.html" %}
 
 {% block content %}
+    <h2>message.html</h2>
+
     {% for message in object_list %}
         <h3>{{message.content}}</h3>
         <h5>{{message.send_time}}</h5>
     {% endfor %}
+
+    <form action="new">
+        <input type="submit" value="New message" />
+    </form>
 {% endblock %}
+

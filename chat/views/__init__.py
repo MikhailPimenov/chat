@@ -1,6 +1,6 @@
 from .indexview import index
 from .registerview import register
-from .messageview import MessageListView
+from .messageview import MessageListView, MessageCreateView
 from .dialogview import DialogListView
 
 __all__ = [
@@ -8,4 +8,5 @@ __all__ = [
     'register',
     'MessageListView',
     'DialogListView',
+    'MessageCreateView',
 ]
