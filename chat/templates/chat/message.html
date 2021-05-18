@@ -4,8 +4,8 @@
     <h2>message.html</h2>
 
     {% for message in object_list %}
-        <h3>{{message.content}}</h3>
-        <h5>{{message.send_time}}</h5>
+        <h4>{{message.content}}</h4>
+        <h6>{{message.send_time}}</h6>
     {% endfor %}
 
     <form action="new">
