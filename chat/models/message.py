@@ -24,6 +24,7 @@ class Message(models.Model):
         return f'message #{self.id} from dialog {self.dialog} sent at {self.send_time}'
 
     def get_absolute_url(self):
+        print('get_absolute_url')
         query_dictionary = QueryDict('', mutable=True)
         query_dictionary.update(
             {

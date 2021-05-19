@@ -3,9 +3,13 @@
 {% block content %}
 <h2>message_new.html</h2>
 <h1>New message</h1>
-<form action="" method="post">{% csrf_token %}
+<p>dialog_id={{dialog_id}}</p>
+
+<form name="full_form" action="created" method="post">{% csrf_token %}
     {{ form.as_p }}
-    <p>new form</p>
+    <input name="dialog" type="number" value="{{dialog_id}}" style="display: none">
+    <p>new form...</p>
+
     <input type="submit" value="Save" />
 </form>
 {% endblock content %}

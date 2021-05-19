@@ -8,8 +8,10 @@
         <h6>{{message.send_time}}</h6>
     {% endfor %}
 
-    <form action="new">
-        <input type="submit" value="New message" />
-    </form>
+    <p>dialog_id={{dialog_id}}</p>
+    <a href="new/?dialog_id={{dialog_id}}">
+        <p>New message</p>
+    </a>
+
 {% endblock %}
 
