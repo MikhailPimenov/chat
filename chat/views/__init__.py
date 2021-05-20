@@ -1,8 +1,8 @@
 from .indexview import index
 from .registerview import register
-from .messageview import MessageListView, MessageCreateView, message_create_render_view
-from .dialogview import DialogListView
-
+from .messageview import MessageListView, MessageCreateView, MessageCreateFormView
+from .dialogview import DialogListView, DialogSearchDetailView, dialog_search_view, DialogCreateView
+from .userview import UserSearchFormView, UserSearchResultView
 
 __all__ = [
     'index',
@@ -10,5 +10,10 @@ __all__ = [
     'MessageListView',
     'DialogListView',
     'MessageCreateView',
-    'message_create_render_view',
+    'MessageCreateFormView',
+    'UserSearchFormView',
+    'UserSearchResultView',
+    'DialogSearchDetailView',
+    'dialog_search_view',
+    'DialogCreateView',
 ]

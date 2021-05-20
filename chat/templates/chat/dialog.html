@@ -1,6 +1,7 @@
 {% extends "chat/index.html" %}
 
 {% block content %}
+    <h2>dialog.html</h2>
     <h3>Your remarkable dialogs:</h3>
     {% for dialog in object_list %}
 
@@ -15,4 +16,8 @@
         <br>
     </a>
     {% endfor %}
+
+    <a href="{% url 'users_search_name' %}">
+        <p4>New dialog</p4>
+    </a>
 {% endblock %}

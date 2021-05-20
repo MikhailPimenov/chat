@@ -1,0 +1,13 @@
+{% extends "chat/index.html" %}
+
+{% block content %}
+<h2>users_search.html</h2>
+
+<p><b>Enter user:</b><br>
+
+<form name="full_form" action="search/results" method="get">{% csrf_token %}
+    <input name="username" type="text"/>
+    <input type="submit" value="Search" />
+</form>
+
+{% endblock %}

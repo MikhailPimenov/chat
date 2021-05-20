@@ -7,6 +7,5 @@ class MessageModelForm(forms.ModelForm):
         model = Message
         fields = [
             'content',
-            # 'dialog',
         ]
 

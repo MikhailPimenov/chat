@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
+from django.urls import reverse
 
 
 def register(request):
@@ -13,7 +14,7 @@ def register(request):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('index')
+            return redirect(reverse(viewname='dialogs_name'))
     else:
         form = UserCreationForm()
 
