@@ -15,7 +15,7 @@ urlpatterns = [
 
     # path('dialogs/new/', views.DialogSearchResultView.as_view(), name='dialogs_search_result_name'),
     # path('dialogs/new/', views.DialogSearchDetailView.as_view(), name='dialogs_search_result_name'),
-    path('dialogs/search/', views.dialog_search_view, name='dialogs_search_result_name'),
+    path('dialogs/search/', views.dialog_search_or_create_view, name='dialogs_search_result_name'),
 
     path('dialogs/new/', views.DialogCreateView, name='new_dialog_name'),
 

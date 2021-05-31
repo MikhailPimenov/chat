@@ -4,7 +4,7 @@ from django.http import QueryDict
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import generic
-from ..models import Dialog
+from ..models import Dialog, Message
 from django.core import exceptions
 
 
@@ -13,7 +13,16 @@ class DialogListView(mixins.LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self, *args, **kwargs):
         queryset = Dialog.objects.filter(users=self.request.user.id)
-        return queryset
+
+        #  TODO: is that possible to filter not empty dialogs using something built-in (without cycles here)
+        messages = Message.objects.all()
+        queryset_with_messages = []
+        for dialog in queryset:
+            for message in messages:
+                if message.dialog == dialog:
+                    queryset_with_messages.append(dialog)
+                    break
+        return queryset_with_messages
 
 
 class DialogSearchDetailView(mixins.LoginRequiredMixin, generic.ListView):
@@ -28,8 +37,7 @@ class DialogSearchDetailView(mixins.LoginRequiredMixin, generic.ListView):
 #         return None
 
 
-def dialog_search_view(request):
-    #  TODO: pass companion's id instead of his name
+def dialog_search_or_create_view(request):
     print('dialog_search_view()')
     print('request.user:', request.user)
     print('other_users_id:', request.GET.get('other_users_id'))
@@ -86,14 +94,15 @@ def dialog_search_view(request):
 #         queryset = Dialog
 
 class DialogCreateView(mixins.LoginRequiredMixin, generic.CreateView):
-    model = Dialog
-    fields = '__all__'
+    pass
+    # model = Dialog
+    # fields = '__all__'
 
-    def post(self, request, *args, **kwargs):
-        print('post')
-        print(request.POST.get('other_username'))
-        # other_user = User.objects.get(username=request.POST.get('other_user'))
-        print('create')
-        print(request.user)
-        # self.object = Dialog.objects.create(users=(request.user, other_user))
-        return super().post(request, *args, **kwargs)
+    # def post(self, request, *args, **kwargs):
+    #     print('post')
+    #     print(request.POST.get('other_username'))
+    #     # other_user = User.objects.get(username=request.POST.get('other_user'))
+    #     print('create')
+    #     print(request.user)
+    #     # self.object = Dialog.objects.create(users=(request.user, other_user))
+    #     return super().post(request, *args, **kwargs)
