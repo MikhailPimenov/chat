@@ -9,7 +9,8 @@
         <p4>{{dialog.start_time}}:
             {% for companion in dialog.users.all %}
                 {% if companion.id != user.id %}
-                   {{companion}}&ensp;
+                   {{companion.username}}&ensp;
+                    <a href="{% url 'blacklist_update_name' %}?username={{companion.username}}&add=true">Block</a>
                 {% endif %}
             {% endfor %}
         </p4>

@@ -12,7 +12,7 @@
         <a>Logged as {{ request.user.username }}</a>
         <a href="/accounts/logout/">Log out</a>
         <a href="{% url 'dialogs_name' %}">Dialogs</a>
-        <a>Blacklist</a>
+        <a href="{% url 'blacklist_name' %}">Blacklist</a>
     {% else %}
         <a href="{% url 'register_name' %}">Register</a>
         <a href="/accounts/login/">Log in</a>

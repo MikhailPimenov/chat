@@ -3,9 +3,7 @@ from django.contrib.auth.models import User
 from django.views import generic
 from django.core import exceptions
 
-from ..forms.usersearchform import UserSearchForm
-from ..models import Message
-from ..forms import MessageModelForm
+from ..forms import UserSearchForm
 
 
 class UserSearchFormView(mixins.LoginRequiredMixin, generic.FormView):
@@ -23,7 +21,3 @@ class UserSearchResultView(mixins.LoginRequiredMixin, generic.DetailView):
         except exceptions.ObjectDoesNotExist:
             user = None
         return user
-
-
-    # def get_context_data(self, **kwargs):
-

@@ -1,0 +1,18 @@
+{% extends "chat/index.html" %}
+
+{% block content %}
+
+
+<h2>blacklist.html</h2>
+<h3>Your blacklist:</h3>
+
+{% for blocked_user in object_list %}
+  <p>{{blocked_user.username}}
+  <a href="{% url 'blacklist_update_name' %}?username={{blocked_user.username}}">X</a>
+  </p>
+{% endfor %}
+
+
+{% endblock %}
+
+<!--<a href="{% url 'dialogs_search_result_name' %}?other_users_id={{object.id}}">-->

@@ -23,5 +23,9 @@ urlpatterns = [
 
     path('users/search/results', views.UserSearchResultView.as_view(), name='users_search_results_name'),
 
+    path('blacklist', views.BlacklistDetailView.as_view(), name='blacklist_name'),
+
+    path('blacklist/update', views.update_blacklist, name='blacklist_update_name'),
+
     path('register', views.register, name='register_name'),
 ]
