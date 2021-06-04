@@ -4,7 +4,7 @@ from django.http import QueryDict
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import generic
-from ..models import Dialog, Message
+from ..models import Dialog, Message, Blacklist
 from django.core import exceptions
 
 
@@ -20,9 +20,33 @@ class DialogListView(mixins.LoginRequiredMixin, generic.ListView):
         for dialog in queryset:
             for message in messages:
                 if message.dialog == dialog:
-                    queryset_with_messages.append(dialog)
+                    blacklist = Blacklist.objects.get(owner=self.request.user)
+                    # print('dialog:', dialog)
+
+                    # dialog['blocked'] = False
+                    dialog_with_block_info = {
+                        'dialog': dialog,
+                        'blocked': False
+                    }
+
+                    for blocked_user in blacklist.blocked_users.all():
+                        if blocked_user in dialog.users.all():
+                            dialog_with_block_info['blocked'] = True
+                            break
+
+                    queryset_with_messages.append(dialog_with_block_info)
+                    # print('dialog:', dialog)
                     break
         return queryset_with_messages
+
+    # def get_context_data(self, *, object_list=None, **kwargs):
+    #     print('DialogListView.get_context_data():')
+    #     context = {
+    #         'object_list': self.get_queryset(),
+    #         'blacklist': Blacklist.objects.get(owner=self.request.user),
+    #         'blocked': False,
+    #     }
+    #     return context
 
 
 class DialogSearchDetailView(mixins.LoginRequiredMixin, generic.ListView):

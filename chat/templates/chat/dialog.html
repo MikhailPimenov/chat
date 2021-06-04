@@ -3,14 +3,19 @@
 {% block content %}
     <h2>dialog.html</h2>
     <h3>Your remarkable dialogs:</h3>
-    {% for dialog in object_list %}
+    {% for dialog_with_block_info in object_list %}
 
-    <a href="/messages/?dialog_id={{dialog.id}}">
-        <p4>{{dialog.start_time}}:
-            {% for companion in dialog.users.all %}
+    <a href="/messages/?dialog_id={{dialog_with_block_info.dialog.id}}">
+        <p4>{{dialog_with_block_info.dialog.start_time}}:
+            {% for companion in dialog_with_block_info.dialog.users.all %}
                 {% if companion.id != user.id %}
-                   {{companion.username}}&ensp;
+                    {{companion.username}}
+                    {% if dialog_with_block_info.blocked %}
+                    <a href="{% url 'blacklist_update_name' %}?username={{companion.username}}">Unblock</a>
+                    {% else %}
                     <a href="{% url 'blacklist_update_name' %}?username={{companion.username}}&add=true">Block</a>
+                    {% endif %}
+
                 {% endif %}
             {% endfor %}
         </p4>

@@ -8,6 +8,18 @@ from ..models import Dialog, Message, Blacklist
 from django.core import exceptions
 
 
+class BlacklistCreateView(mixins.LoginRequiredMixin, generic.CreateView):
+    model = Blacklist
+    fields = '__all__'
+
+    def post(self, request, *args, **kwargs):
+        print('BlacklistCreateView.post():')
+        return super().post(request, *args, **kwargs)
+
+    def get_redirect_field_name(self):
+        return redirect(reverse(viewname='index_name'))
+
+
 class BlacklistDetailView(mixins.LoginRequiredMixin, generic.DetailView):
     template_name = 'chat/blacklist.html'
 

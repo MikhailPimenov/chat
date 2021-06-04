@@ -25,6 +25,8 @@ urlpatterns = [
 
     path('blacklist', views.BlacklistDetailView.as_view(), name='blacklist_name'),
 
+    path('blacklist/new/', views.BlacklistCreateView.as_view(), name='blacklist_new_name'),
+
     path('blacklist/update', views.update_blacklist, name='blacklist_update_name'),
 
     path('register', views.register, name='register_name'),
