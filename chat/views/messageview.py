@@ -1,8 +1,8 @@
 from django.contrib.auth import mixins
-from django.contrib.auth.models import User
 from django.views import generic
-from ..models import Message, Blacklist, Dialog
+
 from ..forms import MessageModelForm
+from ..models import Blacklist, Dialog, Message
 
 
 class MessageListView(mixins.LoginRequiredMixin, generic.ListView):

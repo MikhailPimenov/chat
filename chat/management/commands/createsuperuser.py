@@ -1,7 +1,8 @@
-from django.core.exceptions import ObjectDoesNotExist
-from django.contrib.auth.models import User
-from chat.models import Blacklist
 from django.contrib.auth.management.commands import createsuperuser
+from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
+
+from chat.models import Blacklist
 
 
 class Command(createsuperuser.Command):

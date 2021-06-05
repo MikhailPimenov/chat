@@ -1,4 +1,4 @@
-from django.urls import path, re_path
+from django.urls import path
 
 from chat import views
 
@@ -13,19 +13,13 @@ urlpatterns = [
 
     path('dialogs', views.DialogListView.as_view(), name='dialogs_name'),
 
-    # path('dialogs/new/', views.DialogSearchResultView.as_view(), name='dialogs_search_result_name'),
-    # path('dialogs/new/', views.DialogSearchDetailView.as_view(), name='dialogs_search_result_name'),
     path('dialogs/search/', views.dialog_search_or_create_view, name='dialogs_search_result_name'),
-
-    path('dialogs/new/', views.DialogCreateView, name='new_dialog_name'),
 
     path('users/search', views.UserSearchFormView.as_view(), name='users_search_name'),
 
     path('users/search/results', views.UserSearchResultView.as_view(), name='users_search_results_name'),
 
     path('blacklist', views.BlacklistDetailView.as_view(), name='blacklist_name'),
-
-    path('blacklist/new/', views.BlacklistCreateView.as_view(), name='blacklist_new_name'),
 
     path('blacklist/update', views.update_blacklist, name='blacklist_update_name'),
 

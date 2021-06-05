@@ -1,9 +1,9 @@
+from .blacklistview import BlacklistDetailView, update_blacklist
+from .dialogview import DialogListView, dialog_search_or_create_view
 from .indexview import index
+from .messageview import MessageCreateFormView, MessageCreateView, MessageListView
 from .registerview import register
-from .messageview import MessageListView, MessageCreateView, MessageCreateFormView
-from .dialogview import DialogListView, DialogSearchDetailView, dialog_search_or_create_view, DialogCreateView
 from .userview import UserSearchFormView, UserSearchResultView
-from .blacklistview import BlacklistDetailView, BlacklistUpdateView, update_blacklist, BlacklistCreateView
 
 __all__ = [
     'index',
@@ -14,11 +14,7 @@ __all__ = [
     'MessageCreateFormView',
     'UserSearchFormView',
     'UserSearchResultView',
-    'DialogSearchDetailView',
     'dialog_search_or_create_view',
-    'DialogCreateView',
     'BlacklistDetailView',
-    'BlacklistUpdateView',
     'update_blacklist',
-    'BlacklistCreateView',
 ]

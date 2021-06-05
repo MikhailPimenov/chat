@@ -1,6 +1,6 @@
 from django.db import models
-from django.urls import reverse
 from django.http import QueryDict
+from django.urls import reverse
 
 
 class Message(models.Model):

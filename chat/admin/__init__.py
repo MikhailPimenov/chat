@@ -1,6 +1,6 @@
+from .blacklistsadmin import BlacklistAdmin
 from .dialogadmin import DialogAdmin
 from .messageadmin import MessageAdmin
-from .blacklistsadmin import BlacklistAdmin
 
 __all__ = [
     'DialogAdmin',
