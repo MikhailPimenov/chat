@@ -5,7 +5,7 @@
     <h3>Your remarkable dialogs:</h3>
     {% for dialog_with_block_info in object_list %}
 
-    <a href="/messages/?dialog_id={{dialog_with_block_info.dialog.id}}">
+    <a href="{% url 'messages_name' %}?dialog_id={{dialog_with_block_info.dialog.id}}">
         <p4>{{dialog_with_block_info.dialog.start_time}}:
             {% for companion in dialog_with_block_info.dialog.users.all %}
                 {% if companion.id != user.id %}

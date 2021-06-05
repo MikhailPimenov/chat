@@ -21,9 +21,7 @@ class DialogListView(mixins.LoginRequiredMixin, generic.ListView):
             for message in messages:
                 if message.dialog == dialog:
                     blacklist = Blacklist.objects.get(owner=self.request.user)
-                    # print('dialog:', dialog)
 
-                    # dialog['blocked'] = False
                     dialog_with_block_info = {
                         'dialog': dialog,
                         'blocked': False
@@ -35,18 +33,8 @@ class DialogListView(mixins.LoginRequiredMixin, generic.ListView):
                             break
 
                     queryset_with_messages.append(dialog_with_block_info)
-                    # print('dialog:', dialog)
                     break
         return queryset_with_messages
-
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     print('DialogListView.get_context_data():')
-    #     context = {
-    #         'object_list': self.get_queryset(),
-    #         'blacklist': Blacklist.objects.get(owner=self.request.user),
-    #         'blocked': False,
-    #     }
-    #     return context
 
 
 class DialogSearchDetailView(mixins.LoginRequiredMixin, generic.ListView):

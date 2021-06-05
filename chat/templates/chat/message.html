@@ -9,7 +9,7 @@
     {% endfor %}
 
     <p>dialog_id={{dialog_id}}</p>
-    <a href="new/?dialog_id={{dialog_id}}">
+    <a href="{% url 'new_message_render_name' %}?dialog_id={{dialog_id}}">
         <p>New message</p>
     </a>
 
