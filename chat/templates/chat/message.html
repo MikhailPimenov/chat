@@ -9,9 +9,21 @@
     {% endfor %}
 
     <p>dialog_id={{dialog_id}}</p>
+    {% if is_blocked %}
+
+    <p>You blocked this user</p>
+
+    {% elif is_blocked_by_user %}
+
+    <p>You are blocked</p>
+
+    {% else %}
+
     <a href="{% url 'new_message_render_name' %}?dialog_id={{dialog_id}}">
         <p>New message</p>
     </a>
+
+    {% endif %}
 
 {% endblock %}
 
