@@ -16,10 +16,7 @@ class Command(createsuperuser.Command):
 
     def get_input_data(self, field, message, default=None):
         input_data = super().get_input_data(field, message, default=default)
-        if message in (
-            "Username: ",
-            "Username (leave blank to use 'root'): ",
-        ):
+        if "Username" in message:
             self.username = input_data if input_data else default
         return input_data
 
