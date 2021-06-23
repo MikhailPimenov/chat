@@ -46,9 +46,9 @@ test:
     DATABASE_URL: postgres://runner@postgres:5432/test
   script:
     - python manage.py test
-    - flake8 hello_django --max-line-length=100
-    - black hello_django --check
-    - isort hello_django --check
+    - flake8 django_chat_1 chat --max-line-length=80
+    - black django_chat_1 chat --check
+    - isort django_chat_1 chat --check
 
 deploy:
   stage: deploy
