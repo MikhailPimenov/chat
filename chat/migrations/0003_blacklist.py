@@ -25,7 +25,10 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("blocked_users", models.ManyToManyField(to=settings.AUTH_USER_MODEL)),
+                (
+                    "blocked_users",
+                    models.ManyToManyField(to=settings.AUTH_USER_MODEL),
+                ),
                 (
                     "owner",
                     models.ForeignKey(

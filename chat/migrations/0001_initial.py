@@ -27,7 +27,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("started_time", models.DateTimeField(auto_now_add=True)),
-                ("users", models.ManyToManyField(to=settings.AUTH_USER_MODEL)),
+                (
+                    "users",
+                    models.ManyToManyField(to=settings.AUTH_USER_MODEL),
+                ),
             ],
             options={
                 "verbose_name": "dialog",

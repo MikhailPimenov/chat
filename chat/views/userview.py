@@ -17,7 +17,9 @@ class UserSearchResultView(mixins.LoginRequiredMixin, generic.DetailView):
 
     def get_object(self, queryset=None):
         try:
-            user = User.objects.get(username=self.request.GET.get("username"))
+            user = User.objects.get(
+                username=self.request.GET.get("username")
+            )
         except exceptions.ObjectDoesNotExist:
             user = None
         return user
