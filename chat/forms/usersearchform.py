@@ -6,5 +6,5 @@ class UserSearchForm(forms.ModelForm):
     class Meta:
         model = User
         fields = [
-            'username',
+            "username",
         ]

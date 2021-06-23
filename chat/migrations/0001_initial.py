@@ -15,28 +15,51 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Dialog',
+            name="Dialog",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('started_time', models.DateTimeField(auto_now_add=True)),
-                ('users', models.ManyToManyField(to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("started_time", models.DateTimeField(auto_now_add=True)),
+                ("users", models.ManyToManyField(to=settings.AUTH_USER_MODEL)),
             ],
             options={
-                'verbose_name': 'dialog',
-                'verbose_name_plural': 'dialogs',
+                "verbose_name": "dialog",
+                "verbose_name_plural": "dialogs",
             },
         ),
         migrations.CreateModel(
-            name='Message',
+            name="Message",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content', models.TextField(max_length=50)),
-                ('send_time', models.DateTimeField(auto_now_add=True)),
-                ('dialog', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='messages', to='chat.dialog')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("content", models.TextField(max_length=50)),
+                ("send_time", models.DateTimeField(auto_now_add=True)),
+                (
+                    "dialog",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="messages",
+                        to="chat.dialog",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'message',
-                'verbose_name_plural': 'messages',
+                "verbose_name": "message",
+                "verbose_name_plural": "messages",
             },
         ),
     ]

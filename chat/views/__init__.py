@@ -6,15 +6,15 @@ from .registerview import register
 from .userview import UserSearchFormView, UserSearchResultView
 
 __all__ = [
-    'index',
-    'register',
-    'MessageListView',
-    'DialogListView',
-    'MessageCreateView',
-    'MessageCreateFormView',
-    'UserSearchFormView',
-    'UserSearchResultView',
-    'dialog_search_or_create_view',
-    'BlacklistDetailView',
-    'update_blacklist',
+    "index",
+    "register",
+    "MessageListView",
+    "DialogListView",
+    "MessageCreateView",
+    "MessageCreateFormView",
+    "UserSearchFormView",
+    "UserSearchResultView",
+    "dialog_search_or_create_view",
+    "BlacklistDetailView",
+    "update_blacklist",
 ]

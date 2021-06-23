@@ -9,20 +9,35 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('chat', '0002_rename_started_time_dialog_start_time'),
+        ("chat", "0002_rename_started_time_dialog_start_time"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Blacklist',
+            name="Blacklist",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('blocked_users', models.ManyToManyField(to=settings.AUTH_USER_MODEL)),
-                ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='own_blacklist', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("blocked_users", models.ManyToManyField(to=settings.AUTH_USER_MODEL)),
+                (
+                    "owner",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="own_blacklist",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'blacklist',
-                'verbose_name_plural': 'blacklists',
+                "verbose_name": "blacklist",
+                "verbose_name_plural": "blacklists",
             },
         ),
     ]

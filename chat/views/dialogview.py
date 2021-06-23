@@ -10,7 +10,7 @@ from ..models import Blacklist, Dialog, Message
 
 
 class DialogListView(mixins.LoginRequiredMixin, generic.ListView):
-    template_name = 'chat/dialog.html'
+    template_name = "chat/dialog.html"
 
     def get_queryset(self, *args, **kwargs):
         queryset = Dialog.objects.filter(users=self.request.user.id)
@@ -23,14 +23,11 @@ class DialogListView(mixins.LoginRequiredMixin, generic.ListView):
                 if message.dialog == dialog:
                     blacklist = Blacklist.objects.get(owner=self.request.user)
 
-                    dialog_with_block_info = {
-                        'dialog': dialog,
-                        'blocked': False
-                    }
+                    dialog_with_block_info = {"dialog": dialog, "blocked": False}
 
                     for blocked_user in blacklist.blocked_users.all():
                         if blocked_user in dialog.users.all():
-                            dialog_with_block_info['blocked'] = True
+                            dialog_with_block_info["blocked"] = True
                             break
 
                     queryset_with_messages.append(dialog_with_block_info)
@@ -41,21 +38,21 @@ class DialogListView(mixins.LoginRequiredMixin, generic.ListView):
 def dialog_search_or_create_view(request):
     dialogs = Dialog.objects.filter(users=request.user)
     try:
-        dialog = dialogs.get(users__id=request.GET.get('other_users_id'))
+        dialog = dialogs.get(users__id=request.GET.get("other_users_id"))
     except exceptions.ObjectDoesNotExist:
         dialog = Dialog.objects.create()
         dialog.users.add(request.user)
-        dialog.users.add(User.objects.get(id=request.GET.get('other_users_id')))
+        dialog.users.add(User.objects.get(id=request.GET.get("other_users_id")))
 
-    query_dictionary = QueryDict('', mutable=True)
+    query_dictionary = QueryDict("", mutable=True)
     query_dictionary.update(
         {
-            'dialog_id': dialog.id,
+            "dialog_id": dialog.id,
         }
     )
-    url = '{base_url}?{querystring}'.format(
+    url = "{base_url}?{querystring}".format(
         base_url=reverse(viewname="messages_name"),
-        querystring=query_dictionary.urlencode()
+        querystring=query_dictionary.urlencode(),
     )
 
     return redirect(url)

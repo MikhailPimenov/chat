@@ -7,8 +7,8 @@ class Dialog(models.Model):
     start_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name = 'dialog'
-        verbose_name_plural = 'dialogs'
+        verbose_name = "dialog"
+        verbose_name_plural = "dialogs"
 
     def __str__(self):
-        return f'dialog #{self.id} started at {self.start_time}'
+        return f"dialog #{self.id} started at {self.start_time}"

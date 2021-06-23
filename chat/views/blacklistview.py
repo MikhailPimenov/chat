@@ -8,23 +8,23 @@ from ..models import Blacklist
 
 
 class BlacklistDetailView(mixins.LoginRequiredMixin, generic.DetailView):
-    template_name = 'chat/blacklist.html'
+    template_name = "chat/blacklist.html"
 
     def get_object(self, queryset=None):
         return Blacklist.objects.get(owner=self.request.user)
 
     def get_context_data(self, **kwargs):
         context = {
-            'object_list': self.get_object().blocked_users.all(),
+            "object_list": self.get_object().blocked_users.all(),
         }
         return context
 
 
 def update_blacklist(request):
     blacklist = Blacklist.objects.get(owner=request.user)
-    user = User.objects.get(username=request.GET.get('username', None))
+    user = User.objects.get(username=request.GET.get("username", None))
 
-    if bool(request.GET.get('add', None)):
+    if bool(request.GET.get("add", None)):
         blacklist.blocked_users.add(user)
         return redirect(reverse(viewname="blacklist_name"))
 

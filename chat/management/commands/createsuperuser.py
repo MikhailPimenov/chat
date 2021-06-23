@@ -12,7 +12,7 @@ class Command(createsuperuser.Command):
             superuser = User.objects.get(username=self.username)
             Blacklist.objects.create(owner=superuser)
         except ObjectDoesNotExist:
-            print('Error: superuser was not created')
+            print("Error: superuser was not created")
 
     def get_input_data(self, field, message, default=None):
         input_data = super().get_input_data(field, message, default=default)

@@ -7,19 +7,21 @@ from ..models import Blacklist
 
 
 def register(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = UserCreationForm(request.POST)
 
         if form.is_valid():
             form.save()
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password1']
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password1"]
             user = authenticate(username=username, password=password)
             login(request, user)
-            Blacklist.objects.create(owner=user)  # TODO: separate creating blacklist and registration
-            return redirect(reverse(viewname='index_name'))
+            Blacklist.objects.create(
+                owner=user
+            )  # TODO: separate creating blacklist and registration
+            return redirect(reverse(viewname="index_name"))
     else:
         form = UserCreationForm()
 
-    context = {'form': form}
-    return render(request, 'registration/register.html', context)
+    context = {"form": form}
+    return render(request, "registration/register.html", context)

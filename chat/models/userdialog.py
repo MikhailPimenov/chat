@@ -11,5 +11,5 @@ from django.db import models
 #         on_delete=models.PROTECT,
 #     )
 
-    # class Meta:
-    #     unique_together = ('users', 'dialog') #  TODO: find the way to make dialog unique with certain set of users
+# class Meta:
+#     unique_together = ('users', 'dialog') #  TODO: find the way to make dialog unique with certain set of users

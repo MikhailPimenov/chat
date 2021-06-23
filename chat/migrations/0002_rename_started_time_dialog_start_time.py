@@ -6,13 +6,13 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chat', '0001_initial'),
+        ("chat", "0001_initial"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='dialog',
-            old_name='started_time',
-            new_name='start_time',
+            model_name="dialog",
+            old_name="started_time",
+            new_name="start_time",
         ),
     ]

@@ -7,17 +7,17 @@ from ..forms import UserSearchForm
 
 
 class UserSearchFormView(mixins.LoginRequiredMixin, generic.FormView):
-    template_name = 'chat/users_search.html'
+    template_name = "chat/users_search.html"
     form_class = UserSearchForm
 
 
 class UserSearchResultView(mixins.LoginRequiredMixin, generic.DetailView):
-    template_name = 'chat/users_search_results.html'
+    template_name = "chat/users_search_results.html"
     model = User
 
     def get_object(self, queryset=None):
         try:
-            user = User.objects.get(username=self.request.GET.get('username'))
+            user = User.objects.get(username=self.request.GET.get("username"))
         except exceptions.ObjectDoesNotExist:
             user = None
         return user
