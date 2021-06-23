@@ -10,13 +10,9 @@ class MessageListView(mixins.LoginRequiredMixin, generic.ListView):
 
     def get_owner_and_interlocutor(self):
         owner = self.request.user
-        dialog = Dialog.objects.get(
-            id=self.request.GET.get("dialog_id", None)
-        )
+        dialog = Dialog.objects.get(id=self.request.GET.get("dialog_id", None))
         interlocutor1, interlocutor2 = dialog.users.all()
-        interlocutor = (
-            interlocutor1 if owner != interlocutor1 else interlocutor2
-        )
+        interlocutor = interlocutor1 if owner != interlocutor1 else interlocutor2
         return owner, interlocutor
 
     def is_user_blocked(self, owner, interlocutor):
@@ -34,9 +30,7 @@ class MessageListView(mixins.LoginRequiredMixin, generic.ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         owner, interlocutor = self.get_owner_and_interlocutor()
         context = {
-            "object_list": self.get_queryset(
-                **kwargs
-            ),  # TODO: is it correct?
+            "object_list": self.get_queryset(**kwargs),  # TODO: is it correct?
             "dialog_id": self.request.GET.get("dialog_id", None),
             "is_blocked": self.is_user_blocked(owner, interlocutor),
             "is_blocked_by_user": self.is_user_blocked(interlocutor, owner),

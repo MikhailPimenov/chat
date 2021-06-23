@@ -4,9 +4,7 @@ from chat import views
 
 urlpatterns = [
     path("", views.index, name="index_name"),
-    path(
-        "messages/", views.MessageListView.as_view(), name="messages_name"
-    ),
+    path("messages/", views.MessageListView.as_view(), name="messages_name"),
     path(
         "messages/new/created",
         views.MessageCreateView.as_view(),
